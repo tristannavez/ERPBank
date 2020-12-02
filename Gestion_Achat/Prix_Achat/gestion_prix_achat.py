@@ -41,3 +41,24 @@ def start_module():
             exit()
         else:
             ui.print_error_message("Cette option n'existe pas !")
+
+
+'Fonction afficher les données de la table'
+def show_table(table):
+    title_list = ["id", "produit", "prix", "acheteur"]
+    table = data_manager.get_table_from_file("Prix_Achat/Gestion_prix_achat.csv")
+    ui.print_table(table, title_list)
+
+'Fonction ajout de données dans la table'
+def add(table):
+    list_labels = ["produit : ", "prix : ", "acheteur : "]
+    wanna_stay = True
+    while wanna_stay:
+        new_product = ui.get_inputs(list_labels, "Renseigner les informations : ")
+        new_product.insert(0, common.generate_random(table))
+        table.append(new_product)
+        next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter un nouveau produit")[0]
+        if next_step == "0":
+            data_manager.write_table_to_file("Prix_Achat/Gestion_prix_achat.csv", table)
+            wanna_stay = False
+    return table
