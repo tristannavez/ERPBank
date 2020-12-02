@@ -7,6 +7,9 @@ Structure des données:
     * acheteur (string): Acheteur du produit
 """
 
+import ui
+import data_manager
+import common
 
 def start_module():
     """
@@ -16,7 +19,7 @@ def start_module():
         None
     """
 
-    table = data_manager.get_table_from_file("Prix_Achat/Gestion_prix_achat.csv")
+    table = data_manager.get_table_from_file("Gestion_prix_achat.csv")
     table_title = ["id", "produit", "prix", "acheteur"]
 
     list_options = ["Afficher les données",
@@ -46,7 +49,7 @@ def start_module():
 'Fonction afficher les données de la table'
 def show_table(table):
     title_list = ["id", "produit", "prix", "acheteur"]
-    table = data_manager.get_table_from_file("Prix_Achat/Gestion_prix_achat.csv")
+    table = data_manager.get_table_from_file("Gestion_prix_achat.csv")
     ui.print_table(table, title_list)
 
 'Fonction ajout de données dans la table'
@@ -59,7 +62,7 @@ def add(table):
         table.append(new_product)
         next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter un nouveau produit")[0]
         if next_step == "0":
-            data_manager.write_table_to_file("Prix_Achat/Gestion_prix_achat.csv", table)
+            data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
             wanna_stay = False
     return table
 
@@ -79,7 +82,7 @@ def remove(table, id_):
                 ui.print_error_message("Il y a pas d'ID correspondant !")
         next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer un autre produit")[0]
         if next_step == '0':
-            data_manager.write_table_to_file("Prix_Achat/Gestion_prix_achat.csv", table)
+            data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
             wanna_stay = False
         else:
             id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
@@ -113,7 +116,7 @@ def update(table, id_):
                 ui.print_error_message("You can't add an item because of some reasons!")
         last_step = ui.get_inputs([""], "Press 0 to exit or 1 to update another item.")[0]
         if last_step == '0':
-            data_manager.write_table_to_file("sales/sales.csv", table)
+            data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
             wanna_stay = False
         else:
             id_ = ui.get_inputs(["Please type an ID to update the item at the given ID: "], "\n")[0]
