@@ -62,3 +62,62 @@ def add(table):
             data_manager.write_table_to_file("Prix_Achat/Gestion_prix_achat.csv", table)
             wanna_stay = False
     return table
+
+
+'Fonction de suppression de données dans la table'
+def remove(table, id_):
+    wanna_stay = True
+    current_iterates = 0
+    max_iterates = len(table)
+    while wanna_stay:
+        for i, v in enumerate(table):
+            if v[0] == id_:
+                table.remove(table[i])
+            elif v[0] != id_ and current_iterates < max_iterates:
+                current_iterates += 1
+            else:
+                ui.print_error_message("Il y a pas d'ID correspondant !")
+        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer un autre produit")[0]
+        if next_step == '0':
+            data_manager.write_table_to_file("Prix_Achat/Gestion_prix_achat.csv", table)
+            wanna_stay = False
+        else:
+            id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
+            continue
+    return table
+
+
+'Fonction de mise à jour des données dans la table'
+def update(table, id_):
+    wanna_stay = True
+    current_iterates = 0
+    max_iterates = len(table)
+    while wanna_stay:
+        for i, v in enumerate(table):
+            if v[0] == id_:
+                first_step = ui.get_inputs([""], "Veuillez préciser ce que vous souhaitez modifier à l'indice donné. (produit, prix, acheteur)")[0]
+                if first_step == "produit":
+                    new_product = ui.get_inputs([""], "Veuillez donner un nouveau produit!")
+                    v[1] = new_product[0]
+                elif first_step == "prix":
+                    new_price = ui.get_inputs([""], "Veuillez donner un nouveau prix!")
+                    v[2] = new_price[0]
+                elif first_step == "acheteur":
+                    new_buyer = ui.get_inputs([""], "Veuillez donner un nouvel acheteur!")
+                    v[3] = new_buyer[0]
+                else:
+                    ui.print_error_message("Cette option n'existe pas !")
+            elif v[0] != id_ and current_iterates < max_iterates:
+                current_iterates += 1
+            else:
+                ui.print_error_message("You can't add an item because of some reasons!")
+        last_step = ui.get_inputs([""], "Press 0 to exit or 1 to update another item.")[0]
+        if last_step == '0':
+            data_manager.write_table_to_file("sales/sales.csv", table)
+            wanna_stay = False
+        else:
+            id_ = ui.get_inputs(["Please type an ID to update the item at the given ID: "], "\n")[0]
+            continue
+
+    return table
+
