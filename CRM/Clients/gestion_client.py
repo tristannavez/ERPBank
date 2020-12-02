@@ -5,6 +5,7 @@ Structure des données:
     * nom (string): Nom du client
     * prenom (string): Prenom du client
     * entreprise (string) : Nom de l'entreprise
+    * pays (string) : Pays de l'entreprise
 """
 
 import ui
@@ -15,7 +16,7 @@ import common
 def start_module():
 
     table = data_manager.get_table_from_file("Gestion_client.csv")
-    table_title = ["id", "nom", "prenom", "entreprise"]
+    table_title = ["id", "nom", "prenom", "entreprise", "pays"]
 
     list_options = ["Afficher les données",
                     "Ajouter un client",
@@ -43,13 +44,13 @@ def start_module():
 
 'Fonction afficher les données de la table'
 def show_table(table):
-    title_list = ["id", "nom", "prenom", "entreprise"]
+    title_list = ["id", "nom", "prenom", "entreprise", "pays"]
     table = data_manager.get_table_from_file("Gestion_client.csv")
     ui.print_table(table, title_list)
 
 'Fonction ajout de données dans la table'
 def add(table):
-    list_labels = ["Nom : ", "Prenom : ", "Entreprise : "]
+    list_labels = ["Nom : ", "Prenom : ", "Entreprise : ", "Pays : "]
     wanna_stay = True
     while wanna_stay:
         new_product = ui.get_inputs(list_labels, "Renseigner les informations : ")
@@ -93,16 +94,19 @@ def update(table, id_):
     while wanna_stay:
         for i, v in enumerate(table):
             if v[0] == id_:
-                first_step = ui.get_inputs([""], "Veuillez préciser ce que vous souhaitez modifier à l'indice donné. (nom, prenom, entreprise)")[0]
+                first_step = ui.get_inputs([""], "Veuillez préciser ce que vous souhaitez modifier à l'indice donné. (nom, prenom, entreprise, pays)")[0]
                 if first_step == "nom":
                     new_name = ui.get_inputs([""], "Veuillez renseigner un nouveau nom!")
                     v[1] = new_name[0]
                 elif first_step == "prenom":
                     new_firstname = ui.get_inputs([""], "Veuillez renseigner un nouveau prenom!")
                     v[2] = new_firstname[0]
-                elif first_step == "acheteur":
+                elif first_step == "entreprise":
                     new_firm = ui.get_inputs([""], "Veuillez donner une nouvelle entreprise!")
                     v[3] = new_firm[0]
+                elif first_step == "pays":
+                    new_country = ui.get_inputs([""], "Veuillez donner un nouveau pays!")
+                    v[4] = new_country[0]
                 else:
                     ui.print_error_message("Cette option n'existe pas !")
             elif v[0] != id_ and current_iterates < max_iterates:
