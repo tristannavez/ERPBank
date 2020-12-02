@@ -1,33 +1,29 @@
-""" MODULE GESTION PRIX ACHAT
+""" MODULE GESTION CLIENTS
 
 Structure des données:
     * id (string)
-    * produit (string): Produit acheté
-    * prix (number): Prix du produit
-    * acheteur (string): Acheteur du produit
+    * nom (string): Nom du client
+    * prenom (string): Prenom du client
+    * entreprise (string) : Nom de l'entreprise
 """
 
 import ui
 import data_manager
 import common
 
+
 def start_module():
-    """
-    Commencement du module avec le choix des foncitons.
 
-    Returns:
-        None
-    """
-
-    table = data_manager.get_table_from_file("Gestion_prix_achat.csv")
-    table_title = ["id", "produit", "prix", "acheteur"]
+    table = data_manager.get_table_from_file("Gestion_client.csv")
+    table_title = ["id", "nom", "prenom", "entreprise"]
 
     list_options = ["Afficher les données",
-                    "Ajouter un produit",
-                    "Supprimer un produit",
+                    "Ajouter un client",
+                    "Supprimer un client",
                     "Mettre à jour les données"]
 
-    ui.print_menu("Menu prix achat", list_options, "Sortir ->")
+    ui.print_menu("Menu CRM", list_options, "Sortir ->")
+
     while True:
         option = ui.get_inputs(["Merci de renseigner le n° correspondant : "], "")
         if option[0] == "1":
@@ -45,16 +41,15 @@ def start_module():
         else:
             ui.print_error_message("Cette option n'existe pas !")
 
-
 'Fonction afficher les données de la table'
 def show_table(table):
-    title_list = ["id", "produit", "prix", "acheteur"]
-    table = data_manager.get_table_from_file("Gestion_prix_achat.csv")
+    title_list = ["id", "nom", "prenom", "entreprise"]
+    table = data_manager.get_table_from_file("Gestion_client.csv")
     ui.print_table(table, title_list)
 
 'Fonction ajout de données dans la table'
 def add(table):
-    list_labels = ["Produit : ", "Prix : ", "Acheteur : "]
+    list_labels = ["Nom : ", "Prenom : ", "Entreprise : "]
     wanna_stay = True
     while wanna_stay:
         new_product = ui.get_inputs(list_labels, "Renseigner les informations : ")
