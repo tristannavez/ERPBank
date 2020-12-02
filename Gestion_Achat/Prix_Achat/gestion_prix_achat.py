@@ -113,13 +113,13 @@ def update(table, id_):
             elif v[0] != id_ and current_iterates < max_iterates:
                 current_iterates += 1
             else:
-                ui.print_error_message("You can't add an item because of some reasons!")
-        last_step = ui.get_inputs([""], "Press 0 to exit or 1 to update another item.")[0]
+                ui.print_error_message("Vous ne pouvez pas renseigner cette information ! ")
+        last_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour mettre à jour un autre client .")[0]
         if last_step == '0':
             data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
             wanna_stay = False
         else:
-            id_ = ui.get_inputs(["Please type an ID to update the item at the given ID: "], "\n")[0]
+            id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
             continue
 
     return table

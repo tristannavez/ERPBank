@@ -55,9 +55,9 @@ def add(table):
         new_product = ui.get_inputs(list_labels, "Renseigner les informations : ")
         new_product.insert(0, common.generate_random(table))
         table.append(new_product)
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter un nouveau produit")[0]
+        next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter un nouveau client")[0]
         if next_step == "0":
-            data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
+            data_manager.write_table_to_file("Gestion_client.csv", table)
             wanna_stay = False
     return table
 
@@ -75,9 +75,9 @@ def remove(table, id_):
                 current_iterates += 1
             else:
                 ui.print_error_message("Il y a pas d'ID correspondant !")
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer un autre produit")[0]
+        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer un autre client")[0]
         if next_step == '0':
-            data_manager.write_table_to_file("Gestion_prix_achat.csv", table)
+            data_manager.write_table_to_file("Gestion_client.csv", table)
             wanna_stay = False
         else:
             id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
@@ -93,16 +93,16 @@ def update(table, id_):
     while wanna_stay:
         for i, v in enumerate(table):
             if v[0] == id_:
-                first_step = ui.get_inputs([""], "Veuillez préciser ce que vous souhaitez modifier à l'indice donné. (produit, prix, acheteur)")[0]
-                if first_step == "produit":
-                    new_product = ui.get_inputs([""], "Veuillez donner un nouveau produit!")
-                    v[1] = new_product[0]
-                elif first_step == "prix":
-                    new_price = ui.get_inputs([""], "Veuillez donner un nouveau prix!")
-                    v[2] = new_price[0]
+                first_step = ui.get_inputs([""], "Veuillez préciser ce que vous souhaitez modifier à l'indice donné. (nom, prenom, entreprise)")[0]
+                if first_step == "nom":
+                    new_name = ui.get_inputs([""], "Veuillez renseigner un nouveau nom!")
+                    v[1] = new_name[0]
+                elif first_step == "prenom":
+                    new_firstname = ui.get_inputs([""], "Veuillez renseigner un nouveau prenom!")
+                    v[2] = new_firstname[0]
                 elif first_step == "acheteur":
-                    new_buyer = ui.get_inputs([""], "Veuillez donner un nouvel acheteur!")
-                    v[3] = new_buyer[0]
+                    new_firm = ui.get_inputs([""], "Veuillez donner une nouvelle entreprise!")
+                    v[3] = new_firm[0]
                 else:
                     ui.print_error_message("Cette option n'existe pas !")
             elif v[0] != id_ and current_iterates < max_iterates:
