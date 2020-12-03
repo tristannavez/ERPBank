@@ -1,10 +1,10 @@
-Produit;Date de commande;Date de réception;Quantité
-Or ;20/04/2020;01/05/2020;
-Carte de crédit;01/03/2020;15/03/2020;
-Carnet de chèque;23/05/2020;NULL;
-Billets 50€;16/02/2020;24/02/2020;
-Billets 20€;17/05/2020;NULL;
-Billets 10€;23/02/2020;01/03/2020;
-Billets 5€;03/05/2020;15/05/2020;
-Pièce 1€;03/05/2020;15/05/2020;
-Pièce 2€;03/05/2020;15/05/2020;
+ID;Produit;Date de commande;Date de rï¿½ception;Quantitï¿½
+0;Or ;20/04/2020;01/05/2020;
+1;Carte de crï¿½dit;01/03/2020;15/03/2020;
+2;Carnet de chï¿½que;23/05/2020;NULL;
+3;Billets 50ï¿½;16/02/2020;24/02/2020;
+4;Billets 20ï¿½;17/05/2020;NULL;
+5;Billets 10ï¿½;23/02/2020;01/03/2020;
+6;Billets 5ï¿½;03/05/2020;15/05/2020;
+7;Piï¿½ce 1ï¿½;03/05/2020;15/05/2020;
+8;Piï¿½ce 2ï¿½;03/05/2020;15/05/2020;
