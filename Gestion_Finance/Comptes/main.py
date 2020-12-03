@@ -1,12 +1,12 @@
 import ui
-import gestion_client
+import gestion_comptes
 import common
 
 def choose():
     inputs = ui.get_inputs(["Merci d'entrer le chiffre correspondant a ce que vous chercher : "], "")
     option = inputs[0]
     if option == "1":
-        gestion_client.start_module()
+        gestion_comptes.start_module()
     elif option == "0":
         sys.exit(0)
     else:
