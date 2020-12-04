@@ -34,8 +34,7 @@ def start_module(table_list,name_file):
 
 
 def show_table(table,table_title,name_file):
-    table_list_id = table_title
-    table_list_id.insert(0,'id')
+    table_title = ['id'] + table_title
     table = data_manager.get_table_from_file(name_file + ".csv")
     ui.print_table(table, table_title)
 

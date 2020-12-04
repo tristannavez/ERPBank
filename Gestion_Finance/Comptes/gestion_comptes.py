@@ -51,7 +51,7 @@ def show_table(table):
 
 'Fonction ajout de données dans la table'
 def add(table):
-    list_labels = ["N° compte : ", "Montant : ", "Dépense/mois : ", "Crédit : ", "Remboursement :"]
+    list_labels = ["N° compte : ", "Montant : ", "Dépense/mois : ", "Crédit (0 | 1) : ", "Remboursement :"]
     wanna_stay = True
     while wanna_stay:
         new_product = ui.get_inputs(list_labels, "Renseigner les informations : ")
