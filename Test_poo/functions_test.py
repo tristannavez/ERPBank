@@ -25,6 +25,10 @@ def start_module(table_list,name_file):
             show_table(table,table_title,name_file)
         elif option[0] == "2":
             add(table,table_list,name_file)
+        elif option[0] == "3":
+            id_ = ui.get_inputs(["ID: "], "Quel est l'ID du produit a supprimer ? ")[0]
+            table = remove(table, id_, name_file)
+
         elif option[0] == "0":
             exit()
         else:
@@ -49,5 +53,28 @@ def add(table,table_list,name_file):
         if next_step == "0":
             data_manager.write_table_to_file(name_file + ".csv", table)
             wanna_stay = False
+    return table
+
+
+'Fonction de suppression de données dans la table'
+def remove(table,id_,name_file):
+    wanna_stay = True
+    current_iterates = 0
+    max_iterates = len(table)
+    while wanna_stay:
+        for i, v in enumerate(table):
+            if v[0] == id_:
+                table.remove(table[i])
+            elif v[0] != id_ and current_iterates < max_iterates:
+                current_iterates += 1
+            else:
+                ui.print_error_message("Il y a pas d'ID correspondant !")
+        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer")[0]
+        if next_step == '0':
+            data_manager.write_table_to_file(name_file + ".csv", table)
+            wanna_stay = False
+        else:
+            id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
+            continue
     return table
 
