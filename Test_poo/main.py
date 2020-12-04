@@ -21,7 +21,8 @@ def choose():
 
 
 def handle_menu():
-    options = ["Gestion budget", "Gestion des prix d'achat"]
+    options = ["Gestion budget",
+               "Gestion des prix d'achat"]
 
     ui.print_menu("Menu principal", options, "Sortir")
 
