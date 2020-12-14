@@ -28,7 +28,10 @@ def start_module(table_list,name_file):
         elif option[0] == "3":
             id_ = ui.get_inputs(["ID: "], "Quel est l'ID du produit a supprimer ? ")[0]
             table = remove(table, id_, name_file)
-
+        elif option[0] == "4":
+            show_table(table,table_title,name_file)
+            id_ = ui.get_inputs(["ID: "], "Quel est l'ID du produit a mettre à jour ? ")[0]
+            table = update(table, id_,name_file, table_title)
         elif option[0] == "0":
             exit()
         else:
@@ -56,6 +59,8 @@ def add(table,table_list,name_file):
     return table
 
 
+
+
 'Fonction de suppression de données dans la table'
 def remove(table,id_,name_file):
     wanna_stay = True
@@ -77,4 +82,31 @@ def remove(table,id_,name_file):
             id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
             continue
     return table
+
+
+'Fonction de mise à jour des données dans la table'
+def update(table, id_,name_file, table_title):
+    table_title = ['id'] + table_title
+    wanna_stay = True
+    current_iterates = 0
+    'longeur verticale'
+    max_iterates = len(table)
+    'longeur horizontale'
+    max_values = len(table_title)
+    while wanna_stay:
+        for i, v  in enumerate(table):
+            id_ = int(id_)
+            print(table[id_])
+            for i in table_title:
+                values = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + i + " :")
+
+            last_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour mettre à jour un autre client .")[0]
+            if last_step == '0':
+                data_manager.write_table_to_file(name_file + ".csv", table)
+                wanna_stay = False
+            else:
+                id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
+                continue
+    return table
+
 
