@@ -86,25 +86,27 @@ def remove(table,id_,name_file):
 
 'Fonction de mise à jour des données dans la table'
 def update(table, id_,name_file, table_title):
-    table_title = ['id'] + table_title
+
     wanna_stay = True
     current_iterates = 0
+    compteur = 1
     'longeur verticale'
     max_iterates = len(table)
-    'longeur horizontale'
-    max_values = len(table_title)
     while wanna_stay:
-        for i, v  in enumerate(table):
-            id_ = int(id_)
-            print(table[id_])
-            for i in table_title:
-                values = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + i + " :")
-
-            last_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour mettre à jour un autre client .")[0]
-            if last_step == '0':
+        for i, v in enumerate(table):
+            if v[0] == id_:
+                for y in table_title:
+                    value_read = []
+                    value_read = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + y + " :")
+                    v[compteur] = value_read[0]
+                    compteur = compteur + 1
                 data_manager.write_table_to_file(name_file + ".csv", table)
+            elif v[0] != id_ and current_iterates < max_iterates:
+                current_iterates += 1
+        last_step = ui.get_inputs([""], "Pressez 0 pour quitter ou 1 pour en ajouter un revenir")[0]
+        if last_step == '0':
                 wanna_stay = False
-            else:
+        else:
                 id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
                 continue
     return table

@@ -105,7 +105,6 @@ def update(table, id_):
                 elif first_step == "prix":
                     new_budgetd = ui.get_inputs([""], "Saisir budget_donne")
                     v[2] = new_budgetd[0]
-                elif first_step == "acheteur":
                     new_budgetr = ui.get_inputs([""], "Saisir budget_restant")
                     v[3] = new_budgetr[0]
                 else:
