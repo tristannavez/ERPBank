@@ -1,5 +1,5 @@
 # Introduction 
-Création d'un prototype ERP pour banque en CLI via Python 3.8
+Création d'un prototype ERP pour banque en CLI via Python 3.8 - unit test
 # Getting Started
 
 1.	Installation process
