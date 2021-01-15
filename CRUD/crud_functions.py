@@ -1,6 +1,6 @@
-import ui
-import data_manager
-import common
+from Includes import ui
+from Includes import data_manager
+from Includes import common
 
 def start_module(table_list,name_file):
     """

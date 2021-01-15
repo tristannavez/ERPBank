@@ -1,51 +1,29 @@
-# Do not modify this file
-# run this program (the ERP software) from the terminal from thd root directory of this project
-
-
 import sys
-import ui  # User Interface
-
-from Gestion_Achat import Commandes
-# Customer Relationship Management (CRM) module
-from CRM import Clients
-from Gestion_Achat import Commandes
-# Data Analyser module
-
+from CRUD import crud_functions
+from Includes import ui
 
 
 def choose():
-    inputs = ui.get_inputs(["Veuillez saisir un nombre: "], "")
+    list_test = ["name", "budget_donne", "budget_restant"]
+    list_test2 = ["produit", "prix", "acheteur"]
+    inputs = ui.get_inputs(["Merci d'entrer le chiffre correspondant a ce que vous chercher: "], "")
     option = inputs[0]
     if option == "1":
-        store.start_module()
+        crud_functions.start_module(list_test, "Gestion_Achat/Budget/Gestion_budgetaire")
     elif option == "2":
-        hr.start_module()
-    elif option == "3":
-        inventory.start_module()
-    elif option == "4":
-        accounting.start_module()
-    elif option == "5":
-        Gestion_commandes.start_module()
-    elif option == "6":
-        crm.start_module()
-    elif option == "7":
-        data_analyser.start_module()
+        crud_functions.start_module(list_test2, "Gestion_Achat/Prix_Achat/Gestion_prix_achat")
     elif option == "0":
+
         sys.exit(0)
     else:
-        raise KeyError("There is no such option.")
+        raise KeyError("Ce n'est pas une option valable")
 
 
 def handle_menu():
-    options = ["Store manager",
-               "Human resources manager",
-               "Inventory manager",
-               "Accounting manager",
-               "Sales manager",
-               "Customer Relationship Management (CRM)",
-               "Data Analyser Module"]
+    options = ["Gestion budget",
+               "Gestion des prix d'achat"]
 
-    ui.print_menu("Main menu", options, "Exit program")
+    ui.print_menu("Menu principal", options, "Sortir")
 
 
 def main():
