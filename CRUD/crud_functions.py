@@ -46,10 +46,13 @@ def show_table(table,table_title,name_file):
     ui.print_table(table, table_title)
 
 
-def add(table,table_list,name_file):
+def add(table,table_list,name_file,test=''):
     wanna_stay = True
     while wanna_stay:
-        new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
+        if test == '':
+            new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
+        else:
+            new_entry = test
         new_entry.insert(0, common.generate_random(table))
         table.append(new_entry)
         next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
