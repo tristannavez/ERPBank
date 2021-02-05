@@ -97,7 +97,7 @@ def remove(table,id_,name_file='',test=''):
 
 
 'Fonction de mise à jour des données dans la table'
-def update(table, id_,name_file, table_title):
+def update(table, id_,name_file='',table_title='',test=''):
 
     wanna_stay = True
     current_iterates = 0
@@ -107,20 +107,30 @@ def update(table, id_,name_file, table_title):
     while wanna_stay:
         for i, v in enumerate(table):
             if v[0] == id_:
-                for y in table_title:
-                    value_read = []
-                    value_read = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + y + " :")
-                    v[compteur] = value_read[0]
-                    compteur = compteur + 1
-                data_manager.write_table_to_file(name_file + ".csv", table)
+                if test == '':
+                    for y in table_title:
+                        value_read = []
+                        value_read = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + y + " :")
+                        v[compteur] = value_read[0]
+                        compteur = compteur + 1
+
+                else:
+                    while compteur < len(test):
+                        v[compteur] = test[compteur]
+                        compteur = compteur + 1
+
             elif v[0] != id_ and current_iterates < max_iterates:
                 current_iterates += 1
-        last_step = ui.get_inputs([""], "Pressez 0 pour quitter ou 1 pour en ajouter un revenir")[0]
-        if last_step == '0':
+
+        if test == '':
+            last_step = ui.get_inputs([""], "Pressez 0 pour quitter ou 1 pour en ajouter un revenir")[0]
+            id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
+            continue
+            if last_step == '0':
+                data_manager.write_table_to_file(name_file + ".csv", table)
                 wanna_stay = False
         else:
-                id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
-                continue
+            wanna_stay = False
     return table
 
 
