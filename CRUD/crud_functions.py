@@ -69,7 +69,7 @@ def add(table,table_list='',name_file='',test=''):
 
 
 'Fonction de suppression de données dans la table'
-def remove(table,id_,name_file,test=''):
+def remove(table,id_,name_file='',test=''):
     wanna_stay = True
     current_iterates = 0
     max_iterates = len(table)
@@ -92,7 +92,7 @@ def remove(table,id_,name_file,test=''):
                 continue
         else:
             next_step = 0
-            id_ = 1
+            wanna_stay = False
     return table
 
 
