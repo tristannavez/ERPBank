@@ -46,23 +46,30 @@ def show_table(table,table_title,name_file):
     ui.print_table(table, table_title)
 
 
-def add(table,table_list,name_file):
+def add(table,table_list='',name_file='',test=''):
     wanna_stay = True
     while wanna_stay:
-        new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
-        new_entry.insert(0, common.generate_random(table))
-        table.append(new_entry)
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
-        if next_step == "0":
-            data_manager.write_table_to_file(name_file + ".csv", table)
-            wanna_stay = False
+
+        if test == '':
+            new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
+            new_entry.insert(0, common.generate_random(table))
+            next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
+            table.append(new_entry)
+            if next_step == "0":
+                data_manager.write_table_to_file(name_file + ".csv", table)
+        else:
+            new_entry = test
+            next_step = "0"
+            table.append(new_entry)
+
+        wanna_stay = False
     return table
 
 
 
 
 'Fonction de suppression de données dans la table'
-def remove(table,id_,name_file):
+def remove(table,id_,name_file='',test=''):
     wanna_stay = True
     current_iterates = 0
     max_iterates = len(table)
@@ -74,18 +81,23 @@ def remove(table,id_,name_file):
                 current_iterates += 1
             else:
                 ui.print_error_message("Il y a pas d'ID correspondant !")
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer")[0]
-        if next_step == '0':
-            data_manager.write_table_to_file(name_file + ".csv", table)
-            wanna_stay = False
+
+        if test == '':
+            next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer")[0]
+            if next_step == '0':
+                data_manager.write_table_to_file(name_file + ".csv", table)
+                wanna_stay = False
+            else:
+                id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
+                continue
         else:
-            id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
-            continue
+            next_step = 0
+            wanna_stay = False
     return table
 
 
 'Fonction de mise à jour des données dans la table'
-def update(table, id_,name_file, table_title):
+def update(table, id_,name_file='',table_title='',test=''):
 
     wanna_stay = True
     current_iterates = 0
@@ -95,20 +107,30 @@ def update(table, id_,name_file, table_title):
     while wanna_stay:
         for i, v in enumerate(table):
             if v[0] == id_:
-                for y in table_title:
-                    value_read = []
-                    value_read = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + y + " :")
-                    v[compteur] = value_read[0]
-                    compteur = compteur + 1
-                data_manager.write_table_to_file(name_file + ".csv", table)
+                if test == '':
+                    for y in table_title:
+                        value_read = []
+                        value_read = ui.get_inputs([""], "Veuillez donner une valeur pour -> " + y + " :")
+                        v[compteur] = value_read[0]
+                        compteur = compteur + 1
+
+                else:
+                    while compteur < len(test):
+                        v[compteur] = test[compteur]
+                        compteur = compteur + 1
+
             elif v[0] != id_ and current_iterates < max_iterates:
                 current_iterates += 1
-        last_step = ui.get_inputs([""], "Pressez 0 pour quitter ou 1 pour en ajouter un revenir")[0]
-        if last_step == '0':
+
+        if test == '':
+            last_step = ui.get_inputs([""], "Pressez 0 pour quitter ou 1 pour en ajouter un revenir")[0]
+            id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
+            continue
+            if last_step == '0':
+                data_manager.write_table_to_file(name_file + ".csv", table)
                 wanna_stay = False
         else:
-                id_ = ui.get_inputs(["Veuillez renseigner l'ID du client à mettre à jour: "], "\n")[0]
-                continue
+            wanna_stay = False
     return table
 
 
