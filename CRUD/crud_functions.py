@@ -51,11 +51,17 @@ def add(table,table_list,name_file,test=''):
     while wanna_stay:
         if test == '':
             new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
+            new_entry.insert(0, common.generate_random(table))
         else:
             new_entry = test
-        new_entry.insert(0, common.generate_random(table))
+
         table.append(new_entry)
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
+
+        if test == '':
+            next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
+        else:
+            next_step = "0"
+
         if next_step == "0":
             data_manager.write_table_to_file(name_file + ".csv", table)
             wanna_stay = False
