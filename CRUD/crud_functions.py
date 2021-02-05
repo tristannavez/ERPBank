@@ -46,32 +46,30 @@ def show_table(table,table_title,name_file):
     ui.print_table(table, table_title)
 
 
-def add(table,table_list,name_file,test=''):
+def add(table,table_list='',name_file='',test=''):
     wanna_stay = True
     while wanna_stay:
+
         if test == '':
             new_entry = ui.get_inputs(table_list, "Renseigner les informations : ")
             new_entry.insert(0, common.generate_random(table))
+            next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
+            table.append(new_entry)
+            if next_step == "0":
+                data_manager.write_table_to_file(name_file + ".csv", table)
         else:
             new_entry = test
-
-        table.append(new_entry)
-
-        if test == '':
-            next_step = ui.get_inputs([""], "Appuyez sur 0 pour enregistrer & sortir ou sur 1 pour ajouter")[0]
-        else:
             next_step = "0"
+            table.append(new_entry)
 
-        if next_step == "0":
-            data_manager.write_table_to_file(name_file + ".csv", table)
-            wanna_stay = False
+        wanna_stay = False
     return table
 
 
 
 
 'Fonction de suppression de données dans la table'
-def remove(table,id_,name_file):
+def remove(table,id_,name_file,test=''):
     wanna_stay = True
     current_iterates = 0
     max_iterates = len(table)
@@ -83,13 +81,18 @@ def remove(table,id_,name_file):
                 current_iterates += 1
             else:
                 ui.print_error_message("Il y a pas d'ID correspondant !")
-        next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer")[0]
-        if next_step == '0':
-            data_manager.write_table_to_file(name_file + ".csv", table)
-            wanna_stay = False
+
+        if test == '':
+            next_step = ui.get_inputs([""], "Appuyez sur 0 pour sortir ou sur 1 pour supprimer")[0]
+            if next_step == '0':
+                data_manager.write_table_to_file(name_file + ".csv", table)
+                wanna_stay = False
+            else:
+                id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
+                continue
         else:
-            id_ = ui.get_inputs(["Veuillez taper l'ID à supprimer : "], "\n")[0]
-            continue
+            next_step = 0
+            id_ = 1
     return table
 
 
