@@ -1,9 +1,10 @@
-id;Libellé;Budget alloué;Budget restant
+id;Libellï¿½;Budget allouï¿½;Budget restant
 2;A;Z;E
-3;Unité IT ;16000000;465000
-4;Unité Asset Management;250000000;7300000
-6;Unité RH;3200000;800000
-7;Unité Assurance;12500000;3600000
-8;Unité Relation client;2800000;697000
-9;Unité Comptabilité;5400000;189000
-B*RLMidf;a;b;c
+3;Unitï¿½ IT ;16000000;465000
+4;Unitï¿½ Asset Management;250000000;7300000
+6;Unitï¿½ RH;3200000;800000
+7;Unitï¿½ Assurance;12500000;3600000
+8;Unitï¿½ Relation client;2800000;697000
+9;Unitï¿½ Comptabilitï¿½;5400000;189000
+10;t;tt;ttt
+11;o;o;o
