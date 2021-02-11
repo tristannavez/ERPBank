@@ -25,5 +25,4 @@ steps:
   inputs: 
     scriptSource: filePath
     scriptPath: ./CRUD/test_crud_functions.py
-    pythonInterpreter: ./venv/Scripts/python.exe
   displayName: 'Run tests'
