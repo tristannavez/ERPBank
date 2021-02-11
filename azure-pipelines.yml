@@ -21,3 +21,8 @@ steps:
     python -m pip install --upgrade pip
   displayName: 'Install dependencies'
 
+- task: PythonScript@0
+  inputs: 
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_crud_functions.py
+  displayName: 'Run tests'
