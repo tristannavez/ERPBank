@@ -8,8 +8,9 @@ import string
 
 def generate_random(table):
     generated = ''
-    last_value = len(table)
-    generated = str(last_value+2)
+    last_value = table[-1]
+    last_id = int(last_value[0])
+    generated = str(last_id + 1)
     return generated
 
 
