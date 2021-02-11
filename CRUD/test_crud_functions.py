@@ -1,6 +1,8 @@
 from unittest import TestCase
 import crud_functions
 import csv
+from Includes import common
+
 
 class Test_CRUD(TestCase):
     def test_show_table(self):
@@ -65,5 +67,18 @@ class Test(TestCase):
                            ['id3', 'test 2', 'test 3', 'test 4', 'test 5', 'test 6'],
                            ['id4', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6'],
                            ['id5', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6']]
+
+        self.assertEqual(result, expected_result)
+
+    def test_id(self):
+        table = [['test1', 'test 2', 'test 3', 'test 4', 'test 5', 'test 6'],
+                 ['1', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6'],
+                 ['2', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6'],
+                 ['3', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6'],
+                 ['4', 'data 2', 'data 3', 'data 4', 'data 5', 'data 6']]
+
+        result = common.generate_random(table)
+
+        expected_result = '5'
 
         self.assertEqual(result, expected_result)
