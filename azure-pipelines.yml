@@ -3,8 +3,6 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
-trigger:
-- main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -23,3 +21,8 @@ steps:
     python -m pip install --upgrade pip
   displayName: 'Install dependencies'
 
+- task: PythonScript@0
+  inputs: 
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_crud_functions.py
+  displayName: 'Run tests'

@@ -1,5 +1,5 @@
-Libellé TVA;Pourcentage;Catégories
-Taux normal;20%;vente de bien & services
-Taux réduit;10%;produit agricole non transformés
-Taux réduit;5,50%;produits alimentaires
-Taux particulier;2,10%;médicaments remboursables
+Libelle TVA;Pourcentage;Catï¿½gories
+1;Taux normal;20%;vente de bien & services
+2;Taux rï¿½duit;10%;produit agricole non transformï¿½s
+3;Taux rï¿½duit;50%;produits alimentaires
+4;Taux particulier;10%;mï¿½dicaments remboursables
