@@ -55,3 +55,10 @@ steps:
     scriptPath: ./CRUD/test_add.py
 
   displayName: 'Run tests ADD'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_update.py
+
+  displayName: 'Run tests UPDATE'
