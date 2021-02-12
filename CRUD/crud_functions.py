@@ -1,4 +1,5 @@
-from Include import data_manager, ui, common
+from CRUD.Include import ui, common
+from CRUD.Include import data_manager
 
 
 def start_module(table_list,name_file):
