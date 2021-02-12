@@ -1,7 +1,6 @@
 from unittest import TestCase
-import crud_functions
-import csv
 from Includes import common, data_manager
+import crud_functions
 
 
 class Test_CRUD(TestCase):
