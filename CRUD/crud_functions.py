@@ -1,4 +1,4 @@
-from Includes import data_manager, ui, common
+import data_manager, ui, common
 
 
 def start_module(table_list,name_file):
