@@ -34,3 +34,10 @@ steps:
     scriptPath: ./CRUD/test_generate_id.py
 
   displayName: 'Run tests generation ID'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_read_csv.py
+
+  displayName: 'Run tests read CSV'
