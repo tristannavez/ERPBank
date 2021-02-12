@@ -26,6 +26,9 @@ steps:
 
 - script: |
     pip install -U pytest
-    pytest test_crud_functions.py
+    pip install pytest-cov
+    pytest test_crud_functions.py --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml --cov-report=html
+
+
 
   displayName: 'pytest'
