@@ -2,7 +2,7 @@ try:
     from includes import common, ui, data_manager
 
 except:
-    from CRUD import common, data_manager, ui
+    import includes.common, includes.ui, includes.data_manager
 
 
 def start_module(table_list, name_file):
