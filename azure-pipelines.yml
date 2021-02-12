@@ -3,9 +3,11 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
+trigger:
+- master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: ubuntu-default
 strategy:
   matrix:
     Python38:
@@ -19,46 +21,11 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
+  # pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-- task: PythonScript@0
-  inputs: 
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_crud_functions.py
+- script: |
+    pip install pytest pytest-azurepipelines
+    pytest ./CRUD/test_crud_functions.py
 
-  displayName: 'Run tests'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_generate_id.py
-
-  displayName: 'Run tests generation ID'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_read_csv.py
-
-  displayName: 'Run tests read CSV'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_show.py
-
-  displayName: 'Run tests SHOW'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_add.py
-
-  displayName: 'Run tests ADD'
-
-- task: PythonScript@0
-  inputs:
-    scriptSource: filePath
-    scriptPath: ./CRUD/test_update.py
-
-  displayName: 'Run tests UPDATE'
+  displayName: 'pytest'
