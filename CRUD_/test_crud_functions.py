@@ -1,10 +1,9 @@
 import unittest
-import pytest
 
 try:
     import data_manager, common, crud_functions
 except:
-    from CRUD import data_manager, common, crud_functions
+    from CRUD_ import common, data_manager, crud_functions
 
 
 class Test(unittest.TestCase):
