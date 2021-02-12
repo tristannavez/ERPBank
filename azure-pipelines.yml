@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-lastet
+  vmImage: ubuntu-latest
 strategy:
   matrix:
     Python38:
