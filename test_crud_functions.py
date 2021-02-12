@@ -4,13 +4,11 @@ sys.path.insert(0, '/CRUD/')
 sys.path.insert(0, '/includes/')
 
 try:
-    import crud_functions
-    import common, data_manager
-
-except:
     from CRUD import crud_functions
     from includes import common, data_manager
-
+except:
+    from .CRUD import crud_functions
+    from .includes import common, data_manager
 
 class Test(unittest.TestCase):
 
