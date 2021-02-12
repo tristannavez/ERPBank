@@ -1,8 +1,8 @@
 import unittest
 
 try:
-    import CRUD.crud_functions
-    import includes.common, includes.data_manager
+    import crud_functions
+    import common, data_manager
 
 except:
     from CRUD import crud_functions
