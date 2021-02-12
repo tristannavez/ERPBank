@@ -17,7 +17,8 @@ Création d'un prototype ERP pour banque en CLI via Python 3.8 - unit test
 
 
 # Build and Test
-    Test with unittest for Python 3.8
+    Test made with unittest, and run with pytest 
+    pytest test_crud_functions.py
 
 # Contribute
     MSPR EPSI Paris
