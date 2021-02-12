@@ -2,9 +2,6 @@
 implement commonly used functions here
 """
 
-import random
-import string
-
 
 def generate_random(table):
     generated = ''

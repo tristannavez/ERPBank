@@ -1,5 +1,4 @@
-from CRUD import common, data_manager, ui
-
+from CRUD import common,data_manager,ui
 
 def start_module(table_list,name_file):
     """

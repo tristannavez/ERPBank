@@ -1,7 +1,8 @@
 from unittest import TestCase
+
 import common
-import data_manager
 import crud_functions
+import data_manager
 
 
 class Test_CRUD(TestCase):
