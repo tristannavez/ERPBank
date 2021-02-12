@@ -1,7 +1,11 @@
-import data_manager, ui, common
+try:
+    import data_manager, ui, common
+
+except:
+    from CRUD import data_manager, ui, common
 
 
-def start_module(table_list,name_file):
+def start_module(table_list, name_file):
     """
     Commencement du module avec le choix des foncitons.
 
@@ -21,31 +25,29 @@ def start_module(table_list,name_file):
     while True:
         option = ui.get_inputs(["Merci de renseigner le n° correspondant"], "")
         if option[0] == "1":
-            show_table(table,table_title,name_file)
+            show_table(table, table_title, name_file)
         elif option[0] == "2":
-            add(table,table_list,name_file)
+            add(table, table_list, name_file)
         elif option[0] == "3":
             id_ = ui.get_inputs(["ID: "], "Quel est l'ID du produit a supprimer ? ")[0]
             table = remove(table, id_, name_file)
         elif option[0] == "4":
-            show_table(table,table_title,name_file)
+            show_table(table, table_title, name_file)
             id_ = ui.get_inputs(["ID: "], "Quel est l'ID du produit a mettre à jour ? ")[0]
-            table = update(table, id_,name_file, table_title)
+            table = update(table, id_, name_file, table_title)
         elif option[0] == "0":
             exit()
         else:
             ui.print_error_message("Cette option n'existe pas !")
 
 
-
-
-def show_table(table,table_title,name_file):
+def show_table(table, table_title, name_file):
     table_title = ['id'] + table_title
     table = data_manager.get_table_from_file(name_file + ".csv")
     ui.print_table(table, table_title)
 
 
-def add(table,table_list='',name_file='',test=''):
+def add(table, table_list='', name_file='', test=''):
     wanna_stay = True
     while wanna_stay:
 
@@ -65,10 +67,10 @@ def add(table,table_list='',name_file='',test=''):
     return table
 
 
-
-
 'Fonction de suppression de données dans la table'
-def remove(table,id_,name_file='',test=''):
+
+
+def remove(table, id_, name_file='', test=''):
     wanna_stay = True
     current_iterates = 0
     max_iterates = len(table)
@@ -96,8 +98,9 @@ def remove(table,id_,name_file='',test=''):
 
 
 'Fonction de mise à jour des données dans la table'
-def update(table, id_,name_file='',table_title='',test=''):
 
+
+def update(table, id_, name_file='', table_title='', test=''):
     wanna_stay = True
     current_iterates = 0
     compteur = 1
@@ -131,5 +134,3 @@ def update(table, id_,name_file='',table_title='',test=''):
         else:
             wanna_stay = False
     return table
-
-
