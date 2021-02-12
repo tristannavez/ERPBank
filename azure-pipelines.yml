@@ -48,3 +48,10 @@ steps:
     scriptPath: ./CRUD/test_show.py
 
   displayName: 'Run tests SHOW'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_add.py
+
+  displayName: 'Run tests ADD'
