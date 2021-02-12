@@ -1,9 +1,12 @@
 import unittest
 
 try:
-    import data_manager, common, crud_functions
+    import crud_functions
+    import common, data_manager
+
 except:
-    from CRUD_ import common, data_manager, crud_functions
+    from CRUD import crud_functions
+    from includes import common, data_manager
 
 
 class Test(unittest.TestCase):

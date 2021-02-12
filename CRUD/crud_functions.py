@@ -1,8 +1,8 @@
 try:
-    import data_manager, ui, common
+    from includes import common, ui, data_manager
 
 except:
-    from CRUD_ import common, data_manager, ui
+    from CRUD import common, data_manager, ui
 
 
 def start_module(table_list, name_file):
