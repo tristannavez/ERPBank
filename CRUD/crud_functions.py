@@ -1,7 +1,7 @@
 try:
     import common, ui, data_manager
 except:
-    from includes import common, ui, data_manager
+    from includes import *
 
 
 def start_module(table_list, name_file):
