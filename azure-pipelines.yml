@@ -26,6 +26,6 @@ steps:
 
 - script: |
     pip install -U pytest
-    pytest ./CRUD/test_crud_functions.py
+    pytest ./CRUD_/test_crud_functions.py
 
   displayName: 'pytest'
