@@ -1,6 +1,5 @@
 import sys
-from CRUD import crud_functions
-from CRUD.Include import ui
+from CRUD import crud_functions, ui
 
 
 def choose():
