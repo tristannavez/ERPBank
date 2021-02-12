@@ -27,3 +27,10 @@ steps:
     scriptPath: ./CRUD/test_crud_functions.py
 
   displayName: 'Run tests'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: filePath
+    scriptPath: ./CRUD/test_generate_id.py
+
+  displayName: 'Run tests generation ID'
