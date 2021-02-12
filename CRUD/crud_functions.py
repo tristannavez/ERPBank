@@ -1,7 +1,11 @@
+import sys
+sys.path.insert(0, './CRUD/')
+sys.path.insert(0, './includes/')
+
 try:
     import common, ui, data_manager
 except:
-    from includes import *
+    from includes import common, ui, data_manager
 
 
 def start_module(table_list, name_file):

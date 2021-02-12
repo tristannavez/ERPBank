@@ -1,4 +1,7 @@
 import unittest
+import sys
+sys.path.insert(0, '/CRUD/')
+sys.path.insert(0, '/includes/')
 
 try:
     import crud_functions
