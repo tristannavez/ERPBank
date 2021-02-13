@@ -1,4 +1,4 @@
-ID;Produit;Date de commande;Date de r�ception;Quantit�
+id;Produit;Date de commande;Date de r�ception;Quantit�
 0;Or ;20/04/2020;01/05/2020;
 1;Carte de cr�dit;01/03/2020;15/03/2020;
 2;Carnet de ch�que;23/05/2020;NULL;
