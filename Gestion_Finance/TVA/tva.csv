@@ -1,4 +1,4 @@
-Libelle TVA;Pourcentage;Cat�gories
+id;Libelle TVA;Pourcentage;Cat�gories
 1;Taux normal;20%;vente de bien & services
 2;Taux r�duit;10%;produit agricole non transform�s
 3;Taux r�duit;50%;produits alimentaires
