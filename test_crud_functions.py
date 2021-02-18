@@ -89,7 +89,7 @@ class Test(unittest.TestCase):
                            ['4', 'Audit securite', '4000', '1', '40000'],
                            ['5', 'Loyer annuel', '160000', '1', '160000'],
                            ['6', 'Provisions', '860000', '1', '860000'],
-                           ['7', 'Personnel', '11500000', '1', '12211'],
+                           ['7', 'Personnel', '11500000', '1', ''],
                            ['8', 'Amortissement', '12000', '1', '120000']]
 
         result = data_manager.get_table_from_file(filename)
