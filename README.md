@@ -1,6 +1,7 @@
 # Introduction 
 Création d'un prototype ERP simpliste et adaptatif en Python.
-Création de tests unitaires avec unittest et intérprétation avec pytest
+Création de tests unitaires avec unittest et intérprétation avec pytest.
+Création d'une pipeline yaml utilisé pour le déploiement sur AzureDevops.
 
 # Getting Started
 
