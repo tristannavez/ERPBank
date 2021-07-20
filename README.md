@@ -1,5 +1,7 @@
 # Introduction 
-Création d'un prototype ERP pour banque en CLI via Python 3.8 - unit test
+Création d'un prototype ERP simpliste et adaptatif en Python.
+Création de tests unitaires avec unittest et intérprétation avec pytest
+
 # Getting Started
 
 1.	Installation process
@@ -11,15 +13,11 @@ Création d'un prototype ERP pour banque en CLI via Python 3.8 - unit test
 
     Python 3.8
 
-3.	Latest releases
-
-    1.1
-
-
 # Build and Test
     Test made with unittest, and run with pytest 
-    pytest test_crud_functions.py
+    "pytest test_crud_functions.py"
 
 # Contribute
-    MSPR EPSI Paris
+    • Benjamin Oriol 
+    • Tristan Navez
 
